@@ -4,8 +4,7 @@ Website menu restoran sederhana yang dibuat menggunakan HTML, CSS, dan JavaScrip
 Project ini dibuat untuk latihan sekaligus portfolio.
 
 ## 🚀 Demo
-👉 https://xxayii.my.id  
-(atau nanti link GitHub Pages kalau udah aktif)
+👉 https://xxayii.my.id
 
 <br>
 ## 📸 Preview
