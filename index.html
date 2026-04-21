@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Mamarexx</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <div class="header-top">
+      <div class="store-info">
+        <div class="store-logo">Nc</div>
+        <div>
+          <div class="store-name">Namu Coffé</div>
+          <div class="store-status">
+            <span class="dot"></span> Buka Sekarang
+          </div>
+        </div>
+      </div>
+      <div class="cart-btn" onclick="openCart()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <div class="cart-count" id="cartCount">0</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── SEARCH ── -->
+  <div class="search-wrap fade-in" style="animation-delay:.1s">
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        stroke="rgba(240,237,232,0.4)" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Cari menu favorit kamu...">
+    </div>
+  </div>
+
+  <!-- ── TABLE INFO ── -->
+  <div class="table-bar fade-in" style="animation-delay:.15s">
+    <div class="table-chip">🪑 Meja <strong>Vip</strong></div>
+    <div class="table-chip">📍 QR Order</div>
+  </div>
+
+  <!-- ── HERO BANNER ── -->
+  <section class="hero fade-in" style="animation-delay:.2s">
+    <div class="hero-card">
+      <div class="hero-emoji">☕</div>
+      <div class="hero-tag">⚡ Promo Hari Ini</div>
+      <div class="hero-title">
+        Hemat <span>30%</span><br>untuk semua minuman panas
+      </div>
+      <div class="hero-sub">Berlaku sampai jam 21:00 · Dine-in only</div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORIES ── -->
+  <div class="section-label">Menu</div>
+  <div class="cats-scroll stagger" id="catScroll">
+    <div class="cat-pill active" onclick="selectCat(this, 'all')">
+      <span class="cat-icon">✨</span> Semua
+    </div>
+    <div class="cat-pill" onclick="selectCat(this, 'food')">
+      <span class="cat-icon">🍔</span> Makanan
+    </div>
+    <div class="cat-pill" onclick="selectCat(this, 'drink')">
+      <span class="cat-icon">🧋</span> Minuman
+    </div>
+    <div class="cat-pill" onclick="selectCat(this, 'snack')">
+      <span class="cat-icon">🍟</span> Snack
+    </div>
+    <div class="cat-pill" onclick="selectCat(this, 'dessert')">
+      <span class="cat-icon">🍰</span> Dessert
+    </div>
+  </div>
+
+  <!-- ── FEATURED GRID ── -->
+  <section class="featured fade-in" style="animation-delay:.3s">
+    <div class="featured-grid stagger">
+
+      <!-- Card 1 -->
+      <div class="feat-card"
+        onclick="openItem({emoji:'🍔',name:'MAXS Burger',desc:'Double patty, keju leleh, selada segar, saus spesial rumah',price:45000,cat:'food'})">
+        <div class="feat-img">
+          <span style="position:relative;z-index:1">🍞</span>
+          <div class="feat-badge">🔥 Best</div>
+        </div>
+        <div class="feat-body">
+          <div class="feat-name">Namu Toast</div>
+          <div class="feat-desc">mocha nougat</div>
+          <div class="feat-footer">
+            <div class="feat-price">Rp 50k</div>
+            <button class="add-btn"
+              onclick="event.stopPropagation(); addItem({name:'Namu Toast',price:45000,emoji:'🍔'})">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feat-card"
+        onclick="openItem({emoji:'🧋',name:'Boba Matcha',desc:'Matcha premium grade AA, susu fresh, boba kenyal, gula aren',price:28000,cat:'drink'})">
+        <div class="feat-img">
+          <span style="position:relative;z-index:1">🧋</span>
+          <div class="feat-badge" style="background:#4caf8c">NEW</div>
+        </div>
+        <div class="feat-body">
+          <div class="feat-name">Boba Matcha</div>
+          <div class="feat-desc">Premium grade AA</div>
+          <div class="feat-footer">
+            <div class="feat-price">Rp 28k</div>
+            <button class="add-btn"
+              onclick="event.stopPropagation(); addItem({name:'Boba Matcha',price:28000,emoji:'🧋'})">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Wide (Chef's Pick) -->
+      <div class="feat-card wide"
+        onclick="openItem({emoji:'🍜',name:'Bakmie ayam jamur',desc:'Mie dengan daging wagyu A++',price:300000,cat:'food'})">
+        <div class="feat-img">
+          <span style="position:relative;z-index:1;font-size:45px">🍜</span>
+          <div class="feat-badge" style="background:#9c6fff">Chef</div>
+        </div>
+        <div class="feat-body">
+          <div class="feat-name">Bakmie Daging jamur</div>
+          <div class="feat-desc">Mie dengan daging wagyu A++ </div>
+          <div class="feat-footer">
+            <div class="feat-price">Rp 300k</div>
+            <button class="add-btn"
+              onclick="event.stopPropagation(); addItem({name:'Bakmie Daging jamur',price:300000,emoji:'🍜'})">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── MENU LIST ── -->
+  <section class="menu-section">
+    <div class="section-label" style="padding:0; margin-bottom:4px">Semua Menu</div>
+    <div id="menuList" class="stagger"></div>
+  </section>
+
+</div><!-- /.app -->
+
+<!-- ── CART BOTTOM BAR ── -->
+<div class="cart-bar hidden" id="cartBar">
+  <div class="cart-inner" onclick="openCart()">
+    <div class="cart-left">
+      <div class="cart-bubble" id="cartBarCount">0</div>
+      <div class="cart-label">Lihat Keranjang</div>
+    </div>
+    <div class="cart-total" id="cartBarTotal">Rp 0</div>
+  </div>
+</div>
+
+<!-- ── TOAST NOTIFICATION ── -->
+<div class="toast" id="toast">
+  <span id="toastMsg">Ditambahkan!</span>
+</div>
+
+<!-- ── ITEM DETAIL MODAL ── -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+    <span class="modal-emoji" id="modalEmoji">🍔</span>
+    <div class="modal-name" id="modalName">Item Name</div>
+    <div class="modal-desc" id="modalDesc">Description</div>
+    <div class="modal-price" id="modalPrice">Rp 0</div>
+    <button class="modal-add-btn" id="modalBtn">+ Tambah ke Keranjang</button>
+  </div>
+</div>
+
+<!-- ── CART MODAL ── -->
+<div class="overlay" id="cartOverlay" onclick="closeCartModal(event)">
+  <div class="modal" id="cartModal">
+    <div class="modal-handle"></div>
+    <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:20px; margin-bottom:20px">
+      🛒 Keranjang Kamu
+    </div>
+    <div id="cartItems" style="margin-bottom:20px"></div>
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total Pesanan</span>
+      <span class="cart-total-amount" id="cartModalTotal">Rp 0</span>
+    </div>
+    <button class="modal-add-btn" onclick="checkout()"
+      style="display:flex; align-items:center; justify-content:center; gap:10px;">
+      <span>🚀</span> Pesan Sekarang
+    </button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
